@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": "word4U",
+  "description": "words i do not know but should know @ Test",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ]
+}
