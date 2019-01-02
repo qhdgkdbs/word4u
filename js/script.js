@@ -14,7 +14,7 @@ String.prototype.cleanup = function() {
 
 
  function getWord(rememberedWord2Arr){
-    chrome.tabs.executeScript({
+    chrome.tabs.executeScript({x
         code:"document.querySelector('body').innerText;"
     },function(result){
         var _allWords = result[0].cleanup(); //html문서에 있는 모든 단어를 _allwords에 저장
@@ -48,7 +48,7 @@ String.prototype.cleanup = function() {
         //>함수로 대체
 
     
-        console.log(rememberedWord2Arr);
+        // console.log(rememberedWord2Arr);
     
         chrome.storage.sync.set({
             userWords: rememberedWord2Arr
@@ -76,15 +76,39 @@ String.prototype.cleanup = function() {
     var output = "";
     for(var i in sortedWord){
         // output += sortedWord[i][0]+'의 출력 횟수 : '+ sortedWord[i][1];
-        var para = document.createElement("P");
-        var t = document.createTextNode(sortedWord[i][0]+'의 출력 횟수 : '+ sortedWord[i][1]);
-        para.appendChild(t);
-        document.getElementById("engWord").appendChild(para);
+        var paraEng = document.createElement("P");
+        var paraHowMany = document.createElement("P");
+        var knowP = document.createElement("P");
+
+        var wordInEng = document.createTextNode(sortedWord[i][0]);
+        var howMany = document.createTextNode(sortedWord[i][1]);
+        var knowN = document.createTextNode('NO');
+    
+
+        paraEng.appendChild(wordInEng);
+        paraHowMany.appendChild(howMany);
+        knowP.appendChild(knowN)
+        document.getElementById("engWord").appendChild(paraEng);
+        document.getElementById("howMany").appendChild(paraHowMany);
+        document.getElementById("YorN").appendChild(knowP);
+
+
+        knowP.onclick = function(){
+            this.innerHTML('YES');
+            console.log(knowP);
+        }
+
+
+
+        // addEvent(para);
+
     }    
     console.log(output);
     // document.querySelector('#engWord').textContent = output;
 
  }
+
+
 
 
  function removeWord(word){
@@ -95,10 +119,18 @@ String.prototype.cleanup = function() {
  }
 
  function rmWord2run(){
-     var word = ' dear the a';
+     var word = ' dear the a to of in and that was b is are with be c they not at s mark an he she you i t d';
      removeWord(word);
  }
 
+// function addEvent(){
+
+// }
+
+
  rmWord2run();
+
+
+
 
 
